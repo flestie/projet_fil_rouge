@@ -115,7 +115,10 @@ public class BookDao {
 			int rowsAffected = ps.executeUpdate();
 			if(rowsAffected>0) {
 				System.out.println("The product with id: " + b.getId_book() + " has been removed.");
-			}else {
+			}else if(b.getId_book() == 0) {
+				System.out.println("The ID of the book is 0. Which means the book hasn't been added to library.");
+			}
+			else {
 				System.out.println("No product found with ID: " + b.getId_book());
 			}
 		} catch (SQLException e) {
@@ -167,8 +170,13 @@ public class BookDao {
 			ps = cn.prepareStatement(sql);
 			ps.setDouble(1, b.getPrice());
 			ps.setInt(2, b.getId_book());
-			ps.executeUpdate();
-			System.out.println("The price of " + b.getTitle() + " has updated to " + b.getPrice());
+			int rowsAffected = ps.executeUpdate();
+			if(rowsAffected>0) {
+				System.out.println("The price of " + b.getTitle() + " has updated to " + b.getPrice());
+			}
+			else {
+				System.out.println("No product found with ID: " + b.getId_book());
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -188,8 +196,13 @@ public class BookDao {
 			ps = cn.prepareStatement(sql);
 			ps.setDouble(1, price);
 			ps.setInt(2, id);
-			ps.executeUpdate();
-			System.out.println("The price of book id: " + id + " has updated to " + price);
+			int rowsAffected = ps.executeUpdate();
+			if(rowsAffected>0) {
+				System.out.println("The price of book id: " + id + " has updated to " + price);
+			}
+			else {
+				System.out.println("No product found with ID: " + id);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -205,8 +218,13 @@ public class BookDao {
 			ps = cn.prepareStatement(sql);
 			ps.setString(1, img);
 			ps.setInt(2, id);
-			ps.executeUpdate();
-			System.out.println("The image of the book id: " + id + " has succesfully changed to '" + img + "'.");
+			int rowsAffected = ps.executeUpdate();
+			if(rowsAffected>0) {
+				System.out.println("The image of the book id: " + id + " has succesfully changed to '" + img + "'.");
+			}
+			else {
+				System.out.println("No product found with ID: " + id);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
