@@ -1,23 +1,32 @@
-# Document technique du **fil rouge** ou descriptif complet titre de niveau 1 ce qui correspond en ***html*** h1
+# 📚 Library Management System – Java & MySQL
 
+This project is a simple library/book management application built with Java and backed by a MySQL database.
 
+---
 
-## Introduction
+## 🔧 Prerequisites
 
+- Java 21
+- MySQL Connector/J
+- JUnit (your preferred version)
 
-## les prérequis
-* java 21
-* mysqlconnector
-* junit la version
+---
 
-## les étapes
+## 🚀 Key Features
 
-* step 1:
-![alt text](assasin.jpg)
+- Add a book (with duplicate check)
+- Remove a book
+- Update the price or image of a book
+- Display all books
+- Count total books in the database
 
-* step 2 altgr + è ou 7`
+---
+
+## 🧱 Project Structure
+
+### Example from the DAO (`BookDao.java`)
+
 ```java
-javac TestPersonne.java
-    int taille = ClavierUtils.insertInt("saisir taille");
-```
-bla bla bla
+BookDao dao = new BookDao();
+Book book = new Book("Title", "Author", ...);
+dao.addBook(book);
